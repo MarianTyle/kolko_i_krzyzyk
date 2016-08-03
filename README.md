@@ -1,7 +1,7 @@
 # kolko_i_krzyzyk
 Gra kółko i krzyżyk
 
-##1 Poprawka
+#"#1 Poprawka"
 
 Poprawione:
   - skrócona funkcja sprawdz();
