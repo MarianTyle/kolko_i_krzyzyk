@@ -1,10 +1,12 @@
-var ruch=0;
-var nazwa_g1;
-var nazwa_g2;
-var punkty_g1=0;
-var punkty_g2=0;
-var kolej = 'x';
-var remis=true;
+	var ruch=0;
+	var nazwa_g1;
+	var nazwa_g2;
+	var punkty_g1=0;
+	var punkty_g2=0;
+	var kolej = 'x';
+	var remis=true;
+	var x = "";
+	var y = "";
 
 function poczatek() {
 	punkty_g1=0;
@@ -91,104 +93,27 @@ function oznacz_wygrana(pole1,pole2,pole3) {
 }
 
 function sprawdz(tab) {
-	for( i = 0; i < tab.length; i++)
+	var kombi_wygr = new Array(0,1,2,0,3,6,0,4,8,1,4,7,2,4,6,2,5,8,3,4,5,6,7,8);
+	
+	for( j = 0; j < 24; j+=3)
 	{
-		
-		if(tab.charAt(i) == 0)
+		for( i = 0; i < tab.length; i++)
 		{
-			for( a = 0; a < tab.length; a++)
+			if(tab.charAt(i) == kombi_wygr[j])
 			{
-				if(tab.charAt(a)==1)
-					for( b=0; b < tab.length; b++)
-						if(tab.charAt(b)==2)
-						{
-							remis=false;
-							oznacz_wygrana(0,1,2);
-							setTimeout("wygrales()",1000);
-						}
-						
-				if(tab.charAt(a)==3)
-					for( c=0; c < tab.length; c++)
-						if(tab.charAt(c)==6)
-							{
-								remis=false;
-								oznacz_wygrana(0,3,6);
-								setTimeout("wygrales()",1000);
-							}
-				if(tab.charAt(a)==4)
-					for( d=0; d < tab.length; d++)
-						if(tab.charAt(d)==8)
-							{
-								remis=false;
-								oznacz_wygrana(0,4,8);
-								setTimeout("wygrales()",1000);
-							}
+				for( e = 0; e < tab.length; e++)
+					if(tab.charAt(e) == kombi_wygr[j+1])
+						for( f=0; f < tab.length; f++)
+							if(tab.charAt(f) == kombi_wygr[j+2])
+								{
+									remis=false;
+									oznacz_wygrana(kombi_wygr[j], kombi_wygr[j+1], kombi_wygr[j+2]);
+									setTimeout( function(){ wygrales(); }, 1000);
+								}
 			}
-		}
-		
-		else if(tab.charAt(i) == 1)
-		{
-			for( e = 0; e < tab.length; e++)
-				if(tab.charAt(e)==4)
-					for( f=0; f < tab.length; f++)
-						if(tab.charAt(f)==7)
-							{
-								remis=false;
-								oznacz_wygrana(1,4,7);
-								setTimeout("wygrales()",1000);
-							}
-		}
-		
-		else if(tab.charAt(i) == 2)
-		{
-			for( g = 0; g < tab.length; g++)
-			{
-				if(tab.charAt(g)==4)
-					for( h=0; h < tab.length; h++)
-						if(tab.charAt(h)==6)
-							{
-								remis=false;
-								oznacz_wygrana(2,4,6);
-								setTimeout("wygrales()",1000);
-							}
-				if(tab.charAt(g)==5)
-					for( j=0; j < tab.length; j++)
-						if(tab.charAt(j)==8)
-							{
-								remis=false;
-								oznacz_wygrana(2,5,8);
-								setTimeout("wygrales()",1000);
-							}
-			}
-		}
-		
-		else if(tab.charAt(i) == 3)
-		{
-			for( k = 0; k < tab.length; k++)
-				if(tab.charAt(k)==4)
-					for( l=0; l < tab.length; l++)
-						if(tab.charAt(l)==5)
-							{
-								remis=false;
-								oznacz_wygrana(3,4,5);
-								setTimeout("wygrales()",1000);
-							}
-		}
-		
-		else if(tab.charAt(i) == 6)
-		{
-			for( k = 0; k < tab.length; k++)
-				if(tab.charAt(k)==7)
-					for( l=0; l < tab.length; l++)
-						if(tab.charAt(l)==8)
-							{
-								remis=false;
-								oznacz_wygrana(6,7,8);
-								setTimeout("wygrales()",1000);
-							}
 		}
 	}
-	setTimeout("sprawdz_remis()",1000);
+	setTimeout( function(){ sprawdz_remis(); }, 1000);
 }
 
 function nic() {
@@ -197,8 +122,7 @@ function nic() {
 	*/
 }
 
-var x = "";
-var y = "";
+
 function zaznacz(nr) {
 	var pole = "p"+nr;
 	document.getElementById(pole).style.cursor = "default";
@@ -211,7 +135,7 @@ function zaznacz(nr) {
 		sprawdz(x);
 		
 	}
-	else if(ruch%2!=0)
+	else
 	{
 		document.getElementById("kolej_g1").style.color = "#FFFF66";
 		document.getElementById("kolej_g2").style.color = "white";
@@ -223,5 +147,3 @@ function zaznacz(nr) {
 	
 	ruch++;
 }
-
-
