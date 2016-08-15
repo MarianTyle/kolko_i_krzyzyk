@@ -1,12 +1,68 @@
-<html>
+<html class="no-js">
 <head>
+	
 	<meta charset="UTF-8" />
+	<title>Kółko i Krzyżyk</title>
+	<script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<script type="text/javascript" src="javascript/skrypt.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:600&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+	
 </head>
 <body onload="poczatek()">
+	<div id="off_js"><p>Musisz włączyć JavaScript bez niego gra nie zadziała :'(</p></div>
 	<div id="wrap">
+	
+		<div id="pocz">
+			<h1>Kółko i Krzyżyk</h1> <br /> 
+				Gracz1: <input id="gracz1" type="text" placeholder="Podaj nazwe" maxlength="14"><br />
+				Gracz2: <input id="gracz2" type="text" placeholder="Podaj nazwe" maxlength="14"><br /> 
+				<input id="przycisk_start" type="submit" onClick="start()" value="Start!"> 
+		</div>
+		
+		<div id="gra"> 
+			<div class="boki"> 
+				<img src="img/1_1.png" float="right" valign="middle">
+					<span id="kolej_g1"></span><br /> 
+					<span id="punkty_g1" class="punkty"></span>
+			</div>
+			
+			<div id="plansza">
+				<table>
+					<tr>
+						<td class="kursor" id="p0" ></td>
+						<td class="kursor" id="p1" ></td>
+						<td class="kursor" id="p2" ></td>
+					</tr>
+					<tr>
+						<td class="kursor" id="p3" ></td>
+						<td class="kursor" id="p4" ></td>
+						<td class="kursor" id="p5" ></td>
+					</tr>
+					<tr>
+						<td class="kursor" id="p6" ></td>
+						<td class="kursor" id="p7" ></td>
+						<td class="kursor" id="p8" ></td>
+					</tr>
+				</table>
+			</div>
+		
+			<div class="boki"> 
+				<img src="img/2_1.png" float="right" valign="middle">
+				<span id="kolej_g2"></span><br /> 
+				<span id="punkty_g2" class="punkty"></span>
+			</div> 
+			
+			<div style="clear:left; border:0px; margin:0;"></div> 
+		</div>
+		
+		<div id="koniec">
+			<p id="wiadomosc"> </p>
+			<p onClick="stworz()"><span  id="dalej">Dalej</span><img src="img/nowa2.png" valign="middle" float="left"></img></p>
+			<p onClick="poczatek()"><img src="img/nowa.png" valign="middle" float="left"><span  id="od_nowa">Od nowa</span></img></p>
+		</div>
 	</div>
+	
+	<script type="text/javascript" src="javascript/skrypt.js"></script>
+	
 </body>
 </html>
